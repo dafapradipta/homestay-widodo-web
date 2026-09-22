@@ -1,21 +1,40 @@
 ---
 // Navbar Component
+const locale = Astro.currentLocale || "id";
+const isEn = locale === "en";
+
+const t = {
+  home: isEn ? "Home" : "Beranda",
+  rooms: isEn ? "Rooms" : "Kamar",
+  facilities: isEn ? "Facilities" : "Fasilitas",
+  attractions: isEn ? "Attractions" : "Wisata",
+  gallery: isEn ? "Gallery" : "Galeri",
+  contact: isEn ? "Contact" : "Kontak",
+  chat: isEn ? "Chat" : "Chat",
+  waMsg: isEn ? "Hello, I want to ask about room availability at Homestay Slamet Widodo" : "Halo, saya mau tanya ketersediaan kamar di Homestay Slamet Widodo"
+};
 ---
 <!-- DESKTOP NAVBAR -->
 <header id="desktop-nav" class="hidden md:block fixed w-full top-0 z-50 transition-all duration-300 bg-cream-100/95 backdrop-blur-md shadow-sm border-b border-cream-200/50">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="/" class="text-2xl font-serif font-bold text-terracotta-500 tracking-tight flex items-center gap-2 hover:scale-105 transition-transform">
+    <a href={isEn ? "/en" : "/"} class="text-2xl font-serif font-bold text-terracotta-500 tracking-tight flex items-center gap-2 hover:scale-105 transition-transform">
       <svg class="w-6 h-6 text-leaf-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
       Slamet Widodo
     </a>
     
     <nav class="flex gap-8 items-center">
-      <a href="/" class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors">Beranda</a>
-      <a href="/kamar" class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors">Kamar</a>
-      <a href="/fasilitas" class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors">Fasilitas</a>
-      <a href="/lokasi-wisata" class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors">Wisata</a>
-      <a href="/galeri" class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors">Galeri</a>
-      <a href="/kontak" class="bg-gold-500 hover:bg-gold-400 text-white px-5 py-2 rounded-full font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">Kontak</a>
+      <a href={isEn ? "/en" : "/"} class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors nav-item-desktop">{t.home}</a>
+      <a href={isEn ? "/en/kamar" : "/kamar"} class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors nav-item-desktop">{t.rooms}</a>
+      <a href={isEn ? "/en/fasilitas" : "/fasilitas"} class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors nav-item-desktop">{t.facilities}</a>
+      <a href={isEn ? "/en/lokasi-wisata" : "/lokasi-wisata"} class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors nav-item-desktop">{t.attractions}</a>
+      <a href={isEn ? "/en/galeri" : "/galeri"} class="text-terracotta-500 hover:text-leaf-500 font-medium transition-colors nav-item-desktop">{t.gallery}</a>
+      
+      <!-- Language Switcher -->
+      <a href={isEn ? "/" : "/en"} class="text-sm font-bold bg-cream-200 text-terracotta-500 px-3 py-1.5 rounded-full hover:bg-gold-500 hover:text-white transition-colors" title={isEn ? "Switch to Indonesian" : "Ubah ke Bahasa Inggris"}>
+        {isEn ? "🇮🇩 ID" : "🇬🇧 EN"}
+      </a>
+
+      <a href={isEn ? "/en/kontak" : "/kontak"} class="bg-gold-500 hover:bg-gold-400 text-white px-5 py-2 rounded-full font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 nav-item-desktop">{t.contact}</a>
     </nav>
   </div>
 </header>
@@ -50,9 +69,8 @@
     <span class="text-[10px] font-bold tracking-wide">{isEn ? "ID" : "EN"}</span>
   </a>
   <!-- Chat WhatsApp inlined -->
-  <a href={`https://wa.me/6288225386498?text=${encodeURIComponent(t.waMsg)}`} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 text-[#20A83E] hover:text-[#189433] p-2 transition-colors nav-item">
+  <a href={`https://wa.me/6288225386498?text=${encodeURIComponent(t.waMsg)}`} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 text-[#20A83E] hover:text-[#189433] p-2 transition-colors">
     <svg height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#20A83E;" d="M437.019,74.98C388.668,26.628,324.38,0,256,0S123.333,26.628,74.98,74.98S0,187.62,0,256 c0,51.485,15.154,100.938,43.874,143.34L0.69,500.106c-1.343,3.134-0.607,6.966,1.798,9.381c2.495,2.506,6.519,3.206,9.714,1.684 l96.358-45.885C151.858,495.866,202.721,512,256,512c68.38,0,132.668-26.628,181.019-74.98C485.371,388.667,512,324.38,512,256 S485.371,123.333,437.019,74.98z"></path> <circle style="fill:#E5E5E5;" cx="256" cy="256" r="213.333"></circle> <circle style="fill:#FFFFFF;" cx="256" cy="256" r="187.733"></circle> <path style="fill:#20A83E;" d="M392.391,342.641l-7.673-41.561c-0.635-3.432-3.295-6.133-6.718-6.818l-60.339-12.067 c-2.802-0.559-5.691,0.317-7.709,2.334l-24.514,24.514c-41.302-18.507-64.226-41.478-84.396-84.555l24.435-24.436 c2.018-2.017,2.893-4.91,2.334-7.708l-12.068-60.34c-0.685-3.423-3.386-6.084-6.819-6.718l-41.561-7.673 c-1.138-0.21-2.31-0.187-3.44,0.07c-10.974,2.494-20.987,8.023-28.956,15.994c-13.801,13.801-19.075,33.938-15.252,58.237 c6.418,40.801,26.409,97.583,63.289,134.61l0.502,0.5c37.001,36.855,93.782,56.846,134.583,63.265 c5.14,0.809,10.092,1.21,14.838,1.21c17.694,0,32.517-5.581,43.4-16.462c7.97-7.971,13.5-17.984,15.993-28.957 C392.578,344.951,392.602,343.78,392.391,342.641z"></path> <path style="fill:#189433;" d="M349.996,376.428c-4.747,0-9.698-0.401-14.838-1.21c-40.801-6.419-97.583-26.41-134.583-63.265 l-0.502-0.5c-36.88-37.027-56.87-93.809-63.289-134.61c-3.323-21.118,0.236-39.088,10.283-52.492 c-4.388,2.565-8.458,5.689-12.097,9.328c-13.801,13.801-19.075,33.938-15.252,58.237c6.418,40.801,26.409,97.583,63.289,134.61 l0.502,0.5c37.001,36.855,93.782,56.846,134.583,63.265c5.14,0.809,10.092,1.21,14.838,1.21c17.694,0,32.517-5.581,43.4-16.462 c1.974-1.974,3.797-4.075,5.463-6.284C372.747,373.836,362.037,376.428,349.996,376.428z"></path> </g></svg>
-    <span class="text-[10px] font-bold tracking-wide">{t.chat}</span>
   </a>
 </nav>
 
@@ -60,9 +78,23 @@
   // Simple active state logic
   document.addEventListener('astro:page-load', () => {
     const path = window.location.pathname;
-    const items = document.querySelectorAll('.nav-item');
-    items.forEach(item => {
-      if(item.getAttribute('href') === path || (path !== '/' && item.getAttribute('href')?.startsWith(path))) {
+    
+    // Desktop logic
+    const desktopItems = document.querySelectorAll('.nav-item-desktop');
+    desktopItems.forEach(item => {
+      const href = item.getAttribute('href');
+      // match exact path or if it's not root/en and it starts with the path
+      if(href === path || (href !== '/' && href !== '/en' && path.startsWith(href))) {
+        item.classList.remove('text-terracotta-500');
+        item.classList.add('text-leaf-500');
+      }
+    });
+
+    // Mobile logic
+    const mobileItems = document.querySelectorAll('.nav-item');
+    mobileItems.forEach(item => {
+      const href = item.getAttribute('href');
+      if(href === path || (href !== '/' && href !== '/en' && path.startsWith(href))) {
         item.classList.remove('text-terracotta-400');
         item.classList.add('text-terracotta-500');
         item.classList.add('scale-110');
