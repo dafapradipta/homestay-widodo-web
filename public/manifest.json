@@ -1,0 +1,21 @@
+{
+  "name": "Homestay Slamet Widodo",
+  "short_name": "Homestay Widodo",
+  "description": "Penginapan nyaman, murah, dan asri dekat Candi Borobudur.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCF9F2",
+  "theme_color": "#C25A38",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
