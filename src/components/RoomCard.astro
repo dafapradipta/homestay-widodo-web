@@ -20,8 +20,9 @@ const t = {
 ---
 
 <div class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-cream-200 flex flex-col h-full">
-  <div class="relative overflow-hidden h-56">
-    <img src={`/images/${kamar.gambarUtama}`} alt={kamar.nama} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+  <div class="relative h-64 overflow-hidden bg-cream-200">
+    <!-- Gambar Kamar -->
+    <img src={`/images/${kamar.gambarUtama}`} alt={kamar.nama} width="800" height="600" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
     <div class="absolute top-4 right-4 bg-terracotta-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full font-bold shadow-md">
       Rp {kamar.harga.toLocaleString('id-ID')} <span class="text-xs font-normal opacity-90">{t.night}</span>
     </div>

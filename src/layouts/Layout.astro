@@ -34,6 +34,21 @@ const {
 		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 		<meta name="apple-mobile-web-app-title" content="Homestay Widodo" />
 
+		<!-- Hreflang for International SEO -->
+		<link rel="alternate" hreflang="id" href="https://homestay-widodo.vercel.app/" />
+		<link rel="alternate" hreflang="en" href="https://homestay-widodo.vercel.app/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://homestay-widodo.vercel.app/" />
+
+		<!-- Core Web Vitals Resource Hints (Speed) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+		<link rel="dns-prefetch" href="https://wa.me">
+		<link rel="dns-prefetch" href="https://maps.google.com">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="Homestay Widodo" />
+
 		<!-- SEO Meta Tags -->
 		<title>{title} | Homestay Murah dekat Candi Borobudur</title>
 		<meta name="description" content={description} />
@@ -58,55 +73,91 @@ const {
 		<meta property="twitter:description" content="Booking langsung via WhatsApp! Penginapan nyaman, murah, dan asri di Borobudur. Fasilitas lengkap untuk keluarga & rombongan." />
 		<meta property="twitter:image" content="https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg" />
 		
-		<!-- Preconnect and Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 		
-		<!-- JSON-LD Schema -->
+		<!-- JSON-LD Advanced Schema Overkill -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
-				"@type": "LodgingBusiness",
-				"name": "Homestay Slamet Widodo",
-				"image": "https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg",
-				"description": "Penginapan nyaman, murah, dan asri dekat Candi Borobudur. Fasilitas lengkap, cocok untuk rombongan keluarga atau backpacker.",
-				"url": "https://homestay-widodo.vercel.app",
-				"telephone": "+6288225386498",
-				"address": {
-					"@type": "PostalAddress",
-					"streetAddress": "Sendaran RT.3/RW.4, Kembanglimus",
-					"addressLocality": "Borobudur",
-					"addressRegion": "Jawa Tengah",
-					"postalCode": "56553",
-					"addressCountry": "ID"
-				},
-				"geo": {
-					"@type": "GeoCoordinates",
-					"latitude": "-7.620000",
-					"longitude": "110.190000"
-				},
-				"hasMap": "https://maps.app.goo.gl/T9gEuSuwrKSerzmw7",
-				"priceRange": "Rp 99.000 - Rp 299.000",
-				"aggregateRating": {
-					"@type": "AggregateRating",
-					"ratingValue": "4.8",
-					"reviewCount": "24"
-				},
-				"amenityFeature": [
+				"@graph": [
 					{
-						"@type": "LocationFeatureSpecification",
-						"name": "Free Wi-Fi",
-						"value": "True"
+						"@type": "WebSite",
+						"@id": "https://homestay-widodo.vercel.app/#website",
+						"url": "https://homestay-widodo.vercel.app/",
+						"name": "Homestay Slamet Widodo",
+						"description": "Penginapan murah, asri, dan nyaman di sekitar Candi Borobudur.",
+						"publisher": {
+							"@id": "https://homestay-widodo.vercel.app/#organization"
+						},
+						"potentialAction": [{
+							"@type": "SearchAction",
+							"target": {
+								"@type": "EntryPoint",
+								"urlTemplate": "https://homestay-widodo.vercel.app/?s={search_term_string}"
+							},
+							"query-input": "required name=search_term_string"
+						}],
+						"inLanguage": ["id", "en"]
 					},
 					{
-						"@type": "LocationFeatureSpecification",
-						"name": "Air Conditioning",
-						"value": "True"
+						"@type": "Organization",
+						"@id": "https://homestay-widodo.vercel.app/#organization",
+						"name": "Homestay Slamet Widodo",
+						"url": "https://homestay-widodo.vercel.app/",
+						"logo": {
+							"@type": "ImageObject",
+							"inLanguage": "id",
+							"@id": "https://homestay-widodo.vercel.app/#logo",
+							"url": "https://homestay-widodo.vercel.app/favicon.svg",
+							"contentUrl": "https://homestay-widodo.vercel.app/favicon.svg",
+							"width": 512,
+							"height": 512,
+							"caption": "Homestay Slamet Widodo"
+						},
+						"contactPoint": {
+							"@type": "ContactPoint",
+							"telephone": "+6288225386498",
+							"contactType": "customer service",
+							"areaServed": "ID",
+							"availableLanguage": ["Indonesian", "English"]
+						}
+					},
+					{
+						"@type": "LodgingBusiness",
+						"@id": "https://homestay-widodo.vercel.app/#lodgingbusiness",
+						"name": "Homestay Slamet Widodo",
+						"image": "https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg",
+						"description": "Penginapan nyaman, murah, dan asri dekat Candi Borobudur.",
+						"url": "https://homestay-widodo.vercel.app",
+						"telephone": "+6288225386498",
+						"address": {
+							"@type": "PostalAddress",
+							"streetAddress": "Sendaran RT.3/RW.4, Kembanglimus",
+							"addressLocality": "Borobudur",
+							"addressRegion": "Jawa Tengah",
+							"postalCode": "56553",
+							"addressCountry": "ID"
+						},
+						"geo": {
+							"@type": "GeoCoordinates",
+							"latitude": "-7.620000",
+							"longitude": "110.190000"
+						},
+						"hasMap": "https://maps.app.goo.gl/T9gEuSuwrKSerzmw7",
+						"priceRange": "Rp 99.000 - Rp 299.000",
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": "4.8",
+							"bestRating": "5",
+							"worstRating": "1",
+							"ratingCount": "24",
+							"reviewCount": "24"
+						}
 					}
 				]
 			}
 		</script>
+
 		<!-- FAQ Schema (SEO Hacks untuk PAA Google) -->
 		<script type="application/ld+json">
 			{
