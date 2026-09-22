@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fasilitas } from '../../data/fasilitasEn';
+---
+
+<Layout 
+  title="Facilities" 
+  description="Complete facilities at Homestay Slamet Widodo for your comfort."
+  lang="en"
+>
+  <section class="bg-leaf-600 py-20 px-4 text-center">
+    <div class="container mx-auto">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Homestay Facilities</h1>
+      <p class="text-xl text-cream-200 max-w-2xl mx-auto">
+        Enjoy various supporting facilities that make your stay more memorable and comfortable.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-cream-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white rounded-3xl shadow-xl border border-cream-200 p-8 md:p-12">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {fasilitas.map((item) => (
+            <li class="flex items-start gap-4">
+              <div class="bg-leaf-100 text-leaf-600 rounded-full p-2 mt-0.5 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-terracotta-500 font-medium text-lg leading-tight">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

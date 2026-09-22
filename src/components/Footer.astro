@@ -1,14 +1,25 @@
 ---
 const year = new Date().getFullYear();
+const locale = Astro.currentLocale || "id";
+const isEn = locale === "en";
+
+const t = {
+  desc: isEn ? "Comfortable and authentic Javanese homestay near Borobudur Temple." : "Penginapan asri dan nyaman dengan nuansa tradisional Jawa, dekat dengan Candi Borobudur.",
+  contact: isEn ? "Contact & Address" : "Kontak & Alamat",
+  nav: isEn ? "Navigation" : "Navigasi",
+  home: isEn ? "Home" : "Beranda",
+  rooms: isEn ? "Rooms" : "Kamar",
+  attractions: isEn ? "Nearby Attractions" : "Wisata Terdekat"
+};
 ---
 <footer class="bg-terracotta-500 text-cream-100 py-12 mt-16">
   <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
     <div>
       <h3 class="text-xl font-serif font-bold mb-4">Homestay Slamet Widodo</h3>
-      <p class="text-cream-200">Penginapan asri dan nyaman dengan nuansa tradisional Jawa, dekat dengan Candi Borobudur.</p>
+      <p class="text-cream-200">{t.desc}</p>
     </div>
     <div>
-      <h3 class="text-xl font-serif font-bold mb-4">Kontak & Alamat</h3>
+      <h3 class="text-xl font-serif font-bold mb-4">{t.contact}</h3>
       <p class="text-cream-200">
         Sendaran RT.3/RW.4, Kembanglimus<br/>
         Borobudur, Magelang, Jawa Tengah 56553<br/>
@@ -17,11 +28,11 @@ const year = new Date().getFullYear();
       </p>
     </div>
     <div>
-      <h3 class="text-xl font-serif font-bold mb-4">Navigasi</h3>
+      <h3 class="text-xl font-serif font-bold mb-4">{t.nav}</h3>
       <ul class="flex flex-col gap-2 text-cream-200">
-        <li><a href="/" class="hover:text-gold-500 transition-colors">Beranda</a></li>
-        <li><a href="/kamar" class="hover:text-gold-500 transition-colors">Kamar</a></li>
-        <li><a href="/lokasi-wisata" class="hover:text-gold-500 transition-colors">Wisata Terdekat</a></li>
+        <li><a href={isEn ? "/en" : "/"} class="hover:text-gold-500 transition-colors">{t.home}</a></li>
+        <li><a href={isEn ? "/en/kamar" : "/kamar"} class="hover:text-gold-500 transition-colors">{t.rooms}</a></li>
+        <li><a href={isEn ? "/en/lokasi-wisata" : "/lokasi-wisata"} class="hover:text-gold-500 transition-colors">{t.attractions}</a></li>
       </ul>
     </div>
   </div>

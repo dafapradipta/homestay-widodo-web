@@ -24,6 +24,7 @@
 <header class="md:hidden fixed top-0 w-full z-40 bg-gradient-to-b from-black/50 to-transparent p-4 flex justify-center pointer-events-none">
   <div class="pointer-events-auto bg-cream-100/90 backdrop-blur-xl px-6 py-2.5 rounded-full shadow-lg border border-cream-200/50">
     <a href="/" class="text-lg font-serif font-bold text-terracotta-500 flex items-center gap-2">
+    <a href={isEn ? "/en" : "/"} class="text-lg font-serif font-bold text-terracotta-500 flex items-center gap-2">
       <svg class="w-5 h-5 text-leaf-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
       Slamet Widodo
     </a>
@@ -32,22 +33,27 @@
 
 <!-- MOBILE BOTTOM APP-LIKE NAVIGATION -->
 <nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm z-50 bg-cream-100/95 backdrop-blur-xl border border-cream-200/60 shadow-2xl rounded-2xl p-2 flex justify-between items-center px-4">
-  <a href="/" class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-colors nav-item">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-    <span class="text-[10px] font-bold tracking-wide">Home</span>
+  <a href={isEn ? "/en" : "/"} class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-all nav-item relative group">
+    <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+    <span class="text-[10px] font-bold tracking-wide">{t.home}</span>
   </a>
-  <a href="/kamar" class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-colors nav-item">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-    <span class="text-[10px] font-bold tracking-wide">Kamar</span>
+  <a href={isEn ? "/en/kamar" : "/kamar"} class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-all nav-item relative group">
+    <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+    <span class="text-[10px] font-bold tracking-wide">{t.rooms}</span>
   </a>
-  <a href="/galeri" class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-colors nav-item">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-    <span class="text-[10px] font-bold tracking-wide">Galeri</span>
+  <a href={isEn ? "/en/galeri" : "/galeri"} class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-all nav-item relative group">
+    <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+    <span class="text-[10px] font-bold tracking-wide">{t.gallery}</span>
+  </a>
+  <!-- Language Switcher Mobile -->
+  <a href={isEn ? "/" : "/en"} class="flex flex-col items-center gap-1 text-terracotta-400 hover:text-terracotta-500 p-2 transition-all">
+    <span class="text-lg leading-none">{isEn ? "🇮🇩" : "🇬🇧"}</span>
+    <span class="text-[10px] font-bold tracking-wide">{isEn ? "ID" : "EN"}</span>
   </a>
   <!-- Chat WhatsApp inlined -->
-  <a href="https://wa.me/6288225386498?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20kamar%20di%20Homestay%20Slamet%20Widodo" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 text-[#20A83E] hover:text-[#189433] p-2 transition-colors nav-item">
+  <a href={`https://wa.me/6288225386498?text=${encodeURIComponent(t.waMsg)}`} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 text-[#20A83E] hover:text-[#189433] p-2 transition-colors nav-item">
     <svg height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#20A83E;" d="M437.019,74.98C388.668,26.628,324.38,0,256,0S123.333,26.628,74.98,74.98S0,187.62,0,256 c0,51.485,15.154,100.938,43.874,143.34L0.69,500.106c-1.343,3.134-0.607,6.966,1.798,9.381c2.495,2.506,6.519,3.206,9.714,1.684 l96.358-45.885C151.858,495.866,202.721,512,256,512c68.38,0,132.668-26.628,181.019-74.98C485.371,388.667,512,324.38,512,256 S485.371,123.333,437.019,74.98z"></path> <circle style="fill:#E5E5E5;" cx="256" cy="256" r="213.333"></circle> <circle style="fill:#FFFFFF;" cx="256" cy="256" r="187.733"></circle> <path style="fill:#20A83E;" d="M392.391,342.641l-7.673-41.561c-0.635-3.432-3.295-6.133-6.718-6.818l-60.339-12.067 c-2.802-0.559-5.691,0.317-7.709,2.334l-24.514,24.514c-41.302-18.507-64.226-41.478-84.396-84.555l24.435-24.436 c2.018-2.017,2.893-4.91,2.334-7.708l-12.068-60.34c-0.685-3.423-3.386-6.084-6.819-6.718l-41.561-7.673 c-1.138-0.21-2.31-0.187-3.44,0.07c-10.974,2.494-20.987,8.023-28.956,15.994c-13.801,13.801-19.075,33.938-15.252,58.237 c6.418,40.801,26.409,97.583,63.289,134.61l0.502,0.5c37.001,36.855,93.782,56.846,134.583,63.265 c5.14,0.809,10.092,1.21,14.838,1.21c17.694,0,32.517-5.581,43.4-16.462c7.97-7.971,13.5-17.984,15.993-28.957 C392.578,344.951,392.602,343.78,392.391,342.641z"></path> <path style="fill:#189433;" d="M349.996,376.428c-4.747,0-9.698-0.401-14.838-1.21c-40.801-6.419-97.583-26.41-134.583-63.265 l-0.502-0.5c-36.88-37.027-56.87-93.809-63.289-134.61c-3.323-21.118,0.236-39.088,10.283-52.492 c-4.388,2.565-8.458,5.689-12.097,9.328c-13.801,13.801-19.075,33.938-15.252,58.237c6.418,40.801,26.409,97.583,63.289,134.61 l0.502,0.5c37.001,36.855,93.782,56.846,134.583,63.265c5.14,0.809,10.092,1.21,14.838,1.21c17.694,0,32.517-5.581,43.4-16.462 c1.974-1.974,3.797-4.075,5.463-6.284C372.747,373.836,362.037,376.428,349.996,376.428z"></path> </g></svg>
-    <span class="text-[10px] font-bold tracking-wide">Chat</span>
+    <span class="text-[10px] font-bold tracking-wide">{t.chat}</span>
   </a>
 </nav>
 

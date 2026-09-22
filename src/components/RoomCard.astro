@@ -6,40 +6,48 @@ interface Props {
 }
 
 const { kamar } = Astro.props;
-const formatHarga = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(kamar.harga);
+const locale = Astro.currentLocale || "id";
+const isEn = locale === "en";
+
+const t = {
+  night: isEn ? "/ night" : "/ malam",
+  facilities: isEn ? "FACILITIES" : "FASILITAS",
+  otherFacilities: isEn ? "other facilities" : "fasilitas lainnya",
+  detail: isEn ? "Details" : "Detail",
+  book: isEn ? "Book" : "Pesan",
+  waMsg: isEn ? "Hello, I want to book the room:" : "Halo, saya mau pesan kamar:"
+};
 ---
 
 <div class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-cream-200 flex flex-col h-full">
   <div class="relative overflow-hidden h-56">
     <img src={`/images/${kamar.gambarUtama}`} alt={kamar.nama} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-    <div class="absolute top-4 right-4 bg-terracotta-500 text-cream-100 px-3 py-1 rounded-full text-sm font-bold shadow-md">
-      {formatHarga} <span class="text-xs font-normal">/ malam</span>
+    <div class="absolute top-4 right-4 bg-terracotta-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full font-bold shadow-md">
+      Rp {kamar.harga.toLocaleString('id-ID')} <span class="text-xs font-normal opacity-90">{t.night}</span>
     </div>
   </div>
+  
   <div class="p-6 flex flex-col flex-grow">
     <h3 class="text-2xl font-serif font-bold text-terracotta-500 mb-2">{kamar.nama}</h3>
-    <p class="text-terracotta-400 font-medium mb-4">{kamar.deskripsiSingkat}</p>
+    <p class="text-terracotta-400 font-medium mb-4 pb-4 border-b border-cream-200">{kamar.deskripsiSingkat}</p>
     
     <div class="mb-6 flex-grow">
-      <h4 class="text-sm font-bold text-terracotta-400 mb-2 uppercase tracking-wider">Fasilitas</h4>
+      <h4 class="text-xs font-bold text-terracotta-500/70 uppercase tracking-wider mb-3">{t.facilities}</h4>
       <ul class="text-sm text-gray-700 flex flex-col gap-1">
         {kamar.fasilitas.slice(0, 3).map((f) => (
           <li class="flex items-start gap-2">
             <span class="text-leaf-500">✓</span> {f}
           </li>
         ))}
-        {kamar.fasilitas.length > 3 && (
-          <li class="text-xs text-gray-500 italic mt-1">+ {kamar.fasilitas.length - 3} fasilitas lainnya</li>
-        )}
       </ul>
+      {kamar.fasilitas.length > 3 && (
+        <p class="text-xs text-terracotta-400/60 mt-3 italic">+ {kamar.fasilitas.length - 3} {t.otherFacilities}</p>
+      )}
     </div>
     
-    <div class="mt-auto pt-5 border-t border-cream-200 flex flex-col sm:flex-row gap-3">
-      <a href={`/kamar`} class="flex-1 text-center bg-cream-100 hover:bg-cream-200 text-terracotta-500 font-bold py-3 sm:py-2 rounded-xl sm:rounded-lg transition-colors">
-        Detail
-      </a>
-      <a href={`https://wa.me/6288225386498?text=${encodeURIComponent(`Halo, saya tertarik untuk booking ${kamar.nama} di Homestay Slamet Widodo.`)}`} target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-terracotta-500 hover:bg-terracotta-400 text-cream-100 font-bold py-3 sm:py-2 rounded-xl sm:rounded-lg transition-colors shadow-sm">
-        Pesan
+    <div class="flex gap-3 mt-auto pt-4 border-t border-cream-200">
+      <a href={`https://wa.me/6288225386498?text=${encodeURIComponent(`${t.waMsg} ${kamar.nama}`)}`} target="_blank" rel="noopener noreferrer" class="flex-1 bg-terracotta-500 hover:bg-terracotta-400 text-white text-center font-bold py-2.5 px-4 rounded-lg transition-colors">
+        {t.book}
       </a>
     </div>
   </div>

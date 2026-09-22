@@ -8,16 +8,18 @@ import WhatsAppSticky from '../components/WhatsAppSticky.astro';
 interface Props {
 	title: string;
 	description?: string;
+	lang?: string;
 }
 
 const { 
 	title, 
-	description = "Homestay Slamet Widodo - Penginapan nyaman, hangat, dan asri dekat Candi Borobudur, Punthuk Setumbu, dan Gereja Ayam Bukit Rhema." 
+	description = "Penginapan nyaman, murah, dan asri dekat Candi Borobudur.", 
+	lang = Astro.currentLocale || "id" 
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -154,6 +156,18 @@ const {
 		</script>
 		
 		<ClientRouter />
+
+		<!-- Deteksi Bahasa Otomatis -->
+		<script>
+			if (!sessionStorage.getItem('lang-redirected')) {
+				const isEnPath = window.location.pathname.startsWith('/en');
+				const userLang = navigator.language || (navigator as any).userLanguage;
+				if (!isEnPath && userLang && !userLang.startsWith('id')) {
+					sessionStorage.setItem('lang-redirected', 'true');
+					window.location.replace('/en' + window.location.pathname);
+				}
+			}
+		</script>
 	</head>
 	<body class="flex flex-col min-h-screen">
 		<Navbar />

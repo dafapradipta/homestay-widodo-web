@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { wisataTerdekat } from '../../data/wisataEn';
+---
+
+<Layout 
+  title="Nearby Attractions" 
+  description="Strategic location near Borobudur Temple, Punthuk Setumbu, and Bukit Rhema."
+  lang="en"
+>
+  <section class="bg-[#b59555] py-20 px-4 text-center">
+    <div class="container mx-auto">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Nearby Attractions</h1>
+      <p class="text-xl text-cream-200 max-w-2xl mx-auto">
+        Homestay Slamet Widodo is strategically located, making it easy for you to visit various popular destinations in Magelang.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-cream-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {wisataTerdekat.map((item, index) => (
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-cream-200 flex items-center gap-4 hover:shadow-md transition-shadow">
+            <div class="bg-gold-100 text-gold-600 font-bold text-xl w-12 h-12 flex items-center justify-center rounded-full shrink-0">
+              {index + 1}
+            </div>
+            <h3 class="text-lg font-bold text-terracotta-500">{item.nama}</h3>
+          </div>
+        ))}
+      </div>
+      
+      <div class="mt-12 bg-white rounded-2xl shadow-sm border border-cream-200 p-8 text-center">
+        <h3 class="text-2xl font-bold text-terracotta-500 mb-4">Need Transportation?</h3>
+        <p class="text-terracotta-400 mb-6">
+          We provide pick-up/drop-off services and a driver/tour guide to accompany your trip around Borobudur. 
+          Contact us for further information regarding rates and availability.
+        </p>
+        <a href="https://wa.me/6288225386498?text=Hello%2C%20I%20need%20transportation%20info%20in%20Borobudur" target="_blank" class="inline-block bg-[#20A83E] hover:bg-[#189433] text-white font-bold py-3 px-8 rounded-full shadow transition-colors">
+          Chat for Transportation Info
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
