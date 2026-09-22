@@ -43,16 +43,18 @@ const {
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url.href} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL('/images/gambar%20depan%20homestay%20widodo.jpeg', Astro.url)} />
+		<meta property="og:title" content={`${title} | Homestay Murah dekat Candi Borobudur`} />
+		<meta property="og:description" content="Booking langsung via WhatsApp! Penginapan nyaman, murah, dan asri di Borobudur. Fasilitas lengkap untuk keluarga & rombongan." />
+		<meta property="og:image" content="https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg" />
+		<meta property="og:site_name" content="Homestay Slamet Widodo" />
+		<meta property="og:locale" content="id_ID" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url.href} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL('/images/gambar%20depan%20homestay%20widodo.jpeg', Astro.url)} />
+		<meta property="twitter:title" content={`${title} | Homestay Murah dekat Candi Borobudur`} />
+		<meta property="twitter:description" content="Booking langsung via WhatsApp! Penginapan nyaman, murah, dan asri di Borobudur. Fasilitas lengkap untuk keluarga & rombongan." />
+		<meta property="twitter:image" content="https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg" />
 		
 		<!-- Preconnect and Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,6 +103,53 @@ const {
 						"value": "True"
 					}
 				]
+			}
+		</script>
+		<!-- FAQ Schema (SEO Hacks untuk PAA Google) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [{
+					"@type": "Question",
+					"name": "Berapa harga menginap di Homestay Slamet Widodo Borobudur?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Harga menginap mulai dari Rp 99.000 per malam untuk tipe kamar Joglo, dan Rp 299.000 untuk tipe Family Room. Booking langsung via WhatsApp untuk harga terbaik."
+					}
+				}, {
+					"@type": "Question",
+					"name": "Apakah Homestay Slamet Widodo dekat dengan Candi Borobudur?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Ya, sangat dekat. Lokasi kami berada di Sendaran, Kembanglimus yang hanya berjarak beberapa menit berkendara dari kawasan wisata Candi Borobudur."
+					}
+				}, {
+					"@type": "Question",
+					"name": "Apakah ada fasilitas AC dan WiFi di Homestay Borobudur ini?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Tentu, kami menyediakan fasilitas kamar ber-AC, Free WiFi kencang, TV, air panas, dan area parkir luas untuk kenyamanan tamu."
+					}
+				}]
+			}
+		</script>
+		<!-- Breadcrumb Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement": [{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Beranda",
+					"item": "https://homestay-widodo.vercel.app/"
+				},{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Kamar",
+					"item": "https://homestay-widodo.vercel.app/kamar"
+				}]
 			}
 		</script>
 		
