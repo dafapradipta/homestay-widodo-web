@@ -26,9 +26,11 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Meta Tags -->
-		<title>{title} | Homestay Slamet Widodo Borobudur</title>
+		<title>{title} | Homestay Murah dekat Candi Borobudur</title>
 		<meta name="description" content={description} />
-		<meta name="robots" content="index, follow" />
+		<meta name="keywords" content="homestay borobudur, penginapan borobudur, homestay murah borobudur, penginapan dekat candi borobudur, homestay keluarga borobudur, homestay slamet widodo, sendaran kembanglimus, penginapan magelang, desa wisata borobudur" />
+		<meta name="author" content="Homestay Slamet Widodo" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<link rel="canonical" href={Astro.url.href} />
 		
 		<!-- Open Graph / Facebook -->
@@ -56,8 +58,10 @@ const {
 				"@context": "https://schema.org",
 				"@type": "LodgingBusiness",
 				"name": "Homestay Slamet Widodo",
-				"image": "https://[NAMA_DOMAIN]/images/gambar%20depan%20homestay%20widodo.jpeg",
-				"description": "Penginapan nyaman dan asri dekat Candi Borobudur.",
+				"image": "https://homestay-widodo.vercel.app/images/gambar%20depan%20homestay%20widodo.jpeg",
+				"description": "Penginapan nyaman, murah, dan asri dekat Candi Borobudur. Fasilitas lengkap, cocok untuk rombongan keluarga atau backpacker.",
+				"url": "https://homestay-widodo.vercel.app",
+				"telephone": "+6288225386498",
 				"address": {
 					"@type": "PostalAddress",
 					"streetAddress": "Sendaran RT.3/RW.4, Kembanglimus",
@@ -66,10 +70,29 @@ const {
 					"postalCode": "56553",
 					"addressCountry": "ID"
 				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": "-7.620000",
+					"longitude": "110.190000"
+				},
+				"hasMap": "https://maps.app.goo.gl/T9gEuSuwrKSerzmw7",
 				"priceRange": "Rp 99.000 - Rp 299.000",
+				"aggregateRating": {
+					"@type": "AggregateRating",
+					"ratingValue": "4.8",
+					"reviewCount": "24"
+				},
 				"amenityFeature": [
-					{ "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
-					{ "@type": "LocationFeatureSpecification", "name": "AC", "value": true }
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "Free Wi-Fi",
+						"value": "True"
+					},
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "Air Conditioning",
+						"value": "True"
+					}
 				]
 			}
 		</script>
