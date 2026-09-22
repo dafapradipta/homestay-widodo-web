@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import RoomCard from '../components/RoomCard.astro';
+import { dataKamar } from '../data/kamar';
+import { fasilitas } from '../data/fasilitas';
+import { wisataTerdekat } from '../data/wisata';
+
+// Highlight 3 kamar (misal kamar utama 1, kamar utama 2, dan joglo)
+const highlightedRooms = [
+  dataKamar.find(k => k.id === 'kamar-1-utama'),
+  dataKamar.find(k => k.id === 'kamar-2-utama'),
+  dataKamar.find(k => k.id === 'kamar-joglo')
+].filter(Boolean) as typeof dataKamar;
+---
+
+<Layout title="Beranda">
+	<Hero />
+	
+	<!-- About Section -->
+	<section class="py-16 md:py-24 px-6 bg-cream-100 reveal">
+		<div class="max-w-4xl mx-auto text-center">
+			<h2 class="text-3xl md:text-5xl font-serif font-bold text-terracotta-500 mb-6 leading-tight">Selamat Datang di Homestay Slamet Widodo</h2>
+			<p class="text-lg md:text-xl text-terracotta-400 leading-relaxed font-medium">
+				Menawarkan perpaduan sempurna antara kenyamanan modern dan kearifan lokal. 
+				Nikmati udara sejuk, lingkungan asri, serta pengalaman otentik menginap di rumah tradisional Jawa, 
+				hanya beberapa menit dari kemegahan Candi Borobudur.
+			</p>
+		</div>
+	</section>
+
+	<!-- Highlighted Rooms -->
+	<section class="py-16 md:py-24 px-6 bg-white border-y border-cream-200 reveal">
+		<div class="container mx-auto">
+			<div class="text-center mb-10 md:mb-16">
+				<h2 class="text-3xl md:text-5xl font-serif font-bold text-terracotta-500 mb-4">Kamar Pilihan Kami</h2>
+				<p class="text-terracotta-400 text-lg">Pilih kenyamanan menginap di rumah utama atau nuansa unik di rumah Joglo.</p>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+				{highlightedRooms.map(kamar => (
+					<RoomCard kamar={kamar} />
+				))}
+			</div>
+			
+			<div class="text-center mt-12">
+				<a href="/kamar" class="inline-block border-2 border-terracotta-500 text-terracotta-500 hover:bg-terracotta-500 hover:text-white font-bold py-3 px-8 rounded-full transition-colors">
+					Lihat Semua Kamar
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Highlight Fasilitas -->
+	<section class="py-16 md:py-24 px-6 bg-cream-100 reveal">
+		<div class="container mx-auto max-w-5xl">
+			<div class="flex flex-col md:flex-row gap-12 items-center">
+				<div class="w-full md:w-1/2">
+					<h2 class="text-3xl md:text-5xl font-serif font-bold text-terracotta-500 mb-6 leading-tight">Fasilitas Unggulan</h2>
+					<ul class="space-y-4">
+						{fasilitas.slice(0, 5).map(item => (
+							<li class="flex items-start gap-4">
+								<div class="bg-leaf-500 text-white rounded-full p-1 mt-1">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+								</div>
+								<span class="text-terracotta-500 font-medium">{item}</span>
+							</li>
+						))}
+					</ul>
+					<div class="mt-8">
+						<a href="/fasilitas" class="text-leaf-500 hover:text-leaf-400 font-bold underline decoration-2 underline-offset-4">Lihat Fasilitas Lengkap &rarr;</a>
+					</div>
+				</div>
+				<div class="w-full md:w-1/2 relative h-72 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white reveal">
+					<!-- Ganti dengan foto fasilitas/lingkungan asri -->
+					<img src="/images/pemandangan borobudur.webp" alt="Fasilitas Homestay" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Highlight Wisata -->
+	<section class="py-16 md:py-24 px-6 bg-white border-y border-cream-200 reveal">
+		<div class="container mx-auto max-w-5xl text-center">
+			<h2 class="text-3xl md:text-5xl font-serif font-bold text-terracotta-500 mb-6">Jelajahi Pesona Sekitar</h2>
+			<p class="text-terracotta-400 mb-10 text-lg max-w-2xl mx-auto">Lokasi strategis kami memudahkan Anda menjangkau berbagai destinasi wisata ikonik di area Borobudur.</p>
+			
+			<div class="flex flex-wrap justify-center gap-4">
+				{wisataTerdekat.map(w => (
+					<div class="bg-cream-100 text-terracotta-500 px-6 py-3 rounded-full font-medium border border-cream-200 shadow-sm">
+						{w.nama}
+					</div>
+				))}
+			</div>
+			
+			<div class="mt-12">
+				<a href="/lokasi-wisata" class="inline-block border-2 border-leaf-500 text-leaf-500 hover:bg-leaf-500 hover:text-white font-bold py-3 px-8 rounded-full transition-colors">
+					Panduan Wisata Lengkap
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

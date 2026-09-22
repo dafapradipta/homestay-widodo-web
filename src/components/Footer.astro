@@ -1,0 +1,31 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="bg-terracotta-500 text-cream-100 py-12 mt-16">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <h3 class="text-xl font-serif font-bold mb-4">Homestay Slamet Widodo</h3>
+      <p class="text-cream-200">Penginapan asri dan nyaman dengan nuansa tradisional Jawa, dekat dengan Candi Borobudur.</p>
+    </div>
+    <div>
+      <h3 class="text-xl font-serif font-bold mb-4">Kontak & Alamat</h3>
+      <p class="text-cream-200">
+        Sendaran RT.3/RW.4, Kembanglimus<br/>
+        Borobudur, Magelang, Jawa Tengah 56553<br/>
+        <br/>
+        WhatsApp: <a href="https://wa.me/6288225386498" class="hover:text-gold-500">+62 882-2538-6498</a>
+      </p>
+    </div>
+    <div>
+      <h3 class="text-xl font-serif font-bold mb-4">Navigasi</h3>
+      <ul class="flex flex-col gap-2 text-cream-200">
+        <li><a href="/" class="hover:text-gold-500 transition-colors">Beranda</a></li>
+        <li><a href="/kamar" class="hover:text-gold-500 transition-colors">Kamar</a></li>
+        <li><a href="/lokasi-wisata" class="hover:text-gold-500 transition-colors">Wisata Terdekat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center text-cream-200 text-sm mt-12 pt-4 border-t border-terracotta-400/50">
+    &copy; {year} Homestay Slamet Widodo. All rights reserved.
+  </div>
+</footer>

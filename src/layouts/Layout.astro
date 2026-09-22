@@ -1,0 +1,103 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppSticky from '../components/WhatsAppSticky.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+	title, 
+	description = "Homestay Slamet Widodo - Penginapan nyaman, hangat, dan asri dekat Candi Borobudur, Punthuk Setumbu, dan Gereja Ayam Bukit Rhema." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title} | Homestay Slamet Widodo Borobudur</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={Astro.url.href} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url.href} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/images/gambar%20depan%20homestay%20widodo.jpeg', Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url.href} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL('/images/gambar%20depan%20homestay%20widodo.jpeg', Astro.url)} />
+		
+		<!-- Preconnect and Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+		
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "LodgingBusiness",
+				"name": "Homestay Slamet Widodo",
+				"image": "https://[NAMA_DOMAIN]/images/gambar%20depan%20homestay%20widodo.jpeg",
+				"description": "Penginapan nyaman dan asri dekat Candi Borobudur.",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Sendaran RT.3/RW.4, Kembanglimus",
+					"addressLocality": "Borobudur",
+					"addressRegion": "Jawa Tengah",
+					"postalCode": "56553",
+					"addressCountry": "ID"
+				},
+				"priceRange": "Rp 99.000 - Rp 299.000",
+				"amenityFeature": [
+					{ "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
+					{ "@type": "LocationFeatureSpecification", "name": "AC", "value": true }
+				]
+			}
+		</script>
+		
+		<ClientRouter />
+	</head>
+	<body class="flex flex-col min-h-screen">
+		<Navbar />
+		<main class="flex-grow">
+			<slot />
+		</main>
+		<Footer />
+		<WhatsAppSticky />
+		
+		<script>
+			document.addEventListener('astro:page-load', () => {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+						}
+					});
+				}, { threshold: 0.1 });
+
+				document.querySelectorAll('.reveal').forEach((el) => {
+					observer.observe(el);
+				});
+			});
+		</script>
+	</body>
+</html>

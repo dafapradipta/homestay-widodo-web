@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fasilitas } from '../data/fasilitas';
+---
+
+<Layout 
+  title="Fasilitas & Keunggulan" 
+  description="Daftar lengkap fasilitas Homestay Slamet Widodo. Nikmati sarapan gratis, akses metik buah, ruang meeting Joglo, hingga lokasi dekat masjid dan tempat wisata."
+>
+  <section class="bg-leaf-500 py-20 px-4">
+    <div class="container mx-auto text-center mt-12">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Fasilitas Homestay</h1>
+      <p class="text-xl text-cream-200 max-w-2xl mx-auto">
+        Kenyamanan paripurna untuk membuat pengalaman menginap Anda tak terlupakan.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-white min-h-[50vh]">
+    <div class="container mx-auto max-w-4xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {fasilitas.map((item) => (
+          <div class="flex items-start gap-4 p-6 rounded-xl border border-cream-200 bg-cream-100/50 hover:bg-cream-100 transition-colors shadow-sm">
+            <div class="bg-terracotta-500 text-white rounded-full p-2 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <p class="text-terracotta-500 font-medium pt-1 leading-relaxed">
+              {item}
+            </p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="mt-12 p-8 bg-cream-100 rounded-2xl border border-cream-200 text-center">
+        <h3 class="text-2xl font-serif font-bold text-terracotta-500 mb-4">Butuh Layanan Antar-Jemput?</h3>
+        <p class="text-terracotta-400 mb-6">Kami menyediakan opsi layanan antar-jemput dan tur dengan supir untuk kemudahan mobilitas Anda selama di Borobudur.</p>
+        <a href="https://wa.me/6288225386498?text=Halo%2C%20saya%20mau%20tanya%20layanan%20antar-jemput%20atau%20tour%20di%20Homestay%20Slamet%20Widodo" target="_blank" rel="noopener noreferrer" class="inline-block bg-gold-500 hover:bg-[#b59555] text-white font-bold py-3 px-8 rounded-full shadow-md transition-colors">
+          Hubungi Kami untuk Info
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terracotta-500: #8B4A2B;
+  --color-terracotta-400: #A0522D;
+  --color-cream-100: #FAF6EE;
+  --color-cream-200: #F5EDE0;
+  --color-leaf-500: #4A6741;
+  --color-leaf-400: #6B8E4E;
+  --color-gold-500: #C9A86A;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-cream-100);
+    color: var(--color-terracotta-500);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

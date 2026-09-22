@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { wisataTerdekat } from '../data/wisata';
+---
+
+<Layout 
+  title="Lokasi Wisata Terdekat" 
+  description="Homestay Slamet Widodo sangat dekat dengan berbagai destinasi wisata Magelang seperti Candi Borobudur, Punthuk Setumbu, Gereja Ayam, dan pemandian air panas Candi Umbul."
+>
+  <section class="bg-terracotta-400 py-20 px-4">
+    <div class="container mx-auto text-center mt-12">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Lokasi Wisata Terdekat</h1>
+      <p class="text-xl text-cream-100 max-w-2xl mx-auto opacity-90">
+        Maksimalkan waktu liburan Anda dengan mengunjungi pesona wisata ikonik di sekitar area Borobudur.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {wisataTerdekat.map((wisata) => (
+          <div class="border border-cream-200 rounded-xl p-6 bg-cream-100/30 hover:bg-cream-100 transition-colors shadow-sm flex flex-col justify-center items-center text-center h-32 group">
+            <h3 class="text-xl font-serif font-bold text-terracotta-500 group-hover:text-leaf-500 transition-colors">{wisata.nama}</h3>
+          </div>
+        ))}
+      </div>
+      
+      <div class="bg-cream-100 rounded-2xl p-8 border border-cream-200 shadow-md">
+        <h2 class="text-3xl font-serif font-bold text-terracotta-500 mb-6 text-center">Peta Lokasi Kami</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden border-2 border-white shadow-sm bg-gray-200 relative">
+          <!-- Placeholder Google Maps -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15814.288220021316!2d110.19472314647318!3d-7.622543946029587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a8cf00ea318c5%3A0xc3bc9c6dcc7f5351!2sBorobudur!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="absolute inset-0"
+          ></iframe>
+        </div>
+        <p class="text-center text-terracotta-400 mt-6 text-sm">
+          * Peta di atas adalah perkiraan area Borobudur. Hubungi kami untuk share location WhatsApp (Titik akurat).
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

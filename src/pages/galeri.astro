@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Placeholder untuk gambar galeri karena aset asli belum dimasukkan
+const galleryImages = [
+  { src: '/images/gambar depan homestay widodo.jpeg', alt: 'Tampak Depan Homestay' },
+  { src: '/images/gambar depan kamar 1 dan 2.jpeg', alt: 'Kamar 1 dan 2 Tampak Depan' },
+  { src: '/images/gambar depan kamar 3.jpeg', alt: 'Kamar 3 Tampak Depan' },
+  { src: '/images/gambar depan teras 1 dan 2.jpeg', alt: 'Teras Kamar 1 dan 2' },
+  { src: '/images/kamar homestay 1.jpeg', alt: 'Interior Kamar 1' },
+  { src: '/images/kamar homestay 2.jpeg', alt: 'Interior Kamar 2' },
+  { src: '/images/kamar homestay 3.jpeg', alt: 'Interior Kamar 3' },
+  { src: '/images/kamar homestay.jpeg', alt: 'Kamar Joglo Sementara' },
+  { src: '/images/candi borobudur.webp', alt: 'Candi Borobudur' },
+  { src: '/images/pemandangan borobudur.webp', alt: 'Pemandangan Borobudur' },
+];
+---
+
+<Layout 
+  title="Galeri Foto" 
+  description="Lihat kumpulan foto Homestay Slamet Widodo mulai dari eksterior, interior kamar utama, kamar joglo, hingga fasilitas dan pemandangan sekitar."
+>
+  <section class="bg-terracotta-500 py-20 px-4">
+    <div class="container mx-auto text-center mt-12">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Galeri Kami</h1>
+      <p class="text-xl text-cream-200 max-w-2xl mx-auto">
+        Jelajahi setiap sudut kehangatan dan keasrian Homestay Slamet Widodo.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-cream-100 min-h-screen">
+    <div class="container mx-auto max-w-6xl">
+      <!-- Grid Galeri -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="gallery-grid">
+        {galleryImages.map((img, index) => (
+          <div 
+            class="overflow-hidden rounded-xl cursor-pointer group relative aspect-square shadow-sm hover:shadow-lg transition-all"
+            data-index={index}
+          >
+            <img 
+              src={img.src} 
+              alt={img.alt} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox (Native Dialog) -->
+  <dialog id="lightbox" class="[&::backdrop]:bg-black/85 [&::backdrop]:backdrop-blur-sm open:!flex backdrop:bg-black/80 bg-transparent w-screen h-screen max-w-none max-h-none m-0 p-0 overscroll-none fixed inset-0 z-[100] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300">
+    <!-- Close Button -->
+    <button id="close-lightbox" class="absolute top-6 right-6 text-white hover:text-gold-500 z-10 transition-colors">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    
+    <!-- Image Container -->
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm" />
+      <p id="lightbox-caption" class="absolute bottom-10 text-white text-lg font-medium drop-shadow-md bg-black/50 px-4 py-1 rounded-full"></p>
+    </div>
+  </dialog>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const items = document.querySelectorAll('#gallery-grid > div');
+      const lightbox = document.getElementById('lightbox') as HTMLDialogElement;
+      const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+      const lightboxCaption = document.getElementById('lightbox-caption') as HTMLParagraphElement;
+      const closeBtn = document.getElementById('close-lightbox');
+
+      if(!lightbox || items.length === 0) return;
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          if (img) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = img.alt;
+            
+            // Show dialog and fade in
+            lightbox.showModal();
+            // Need a small timeout to allow display block to apply before opacity transition
+            requestAnimationFrame(() => {
+              lightbox.classList.remove('opacity-0');
+              lightbox.classList.add('opacity-100');
+            });
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('opacity-100');
+        lightbox.classList.add('opacity-0');
+        setTimeout(() => {
+          lightbox.close();
+          document.body.style.overflow = '';
+        }, 300); // match duration-300
+      };
+
+      closeBtn?.addEventListener('click', closeLightbox);
+      
+      // Close on backdrop click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.open) {
+          e.preventDefault();
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+
+</Layout>

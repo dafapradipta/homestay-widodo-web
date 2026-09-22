@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const noWA = "6288225386498"; // Ganti dengan nomor asli
+const pesan = "Halo, saya mau tanya ketersediaan kamar di Homestay Slamet Widodo";
+const urlWA = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+---
+
+<Layout 
+  title="Kontak Kami" 
+  description="Hubungi Homestay Slamet Widodo melalui WhatsApp atau temukan lokasi kami di peta. Kami siap melayani pemesanan kamar dan menjawab pertanyaan Anda."
+>
+  <section class="bg-gold-500 py-20 px-4">
+    <div class="container mx-auto text-center mt-12">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Hubungi Kami</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Jangan ragu untuk menghubungi kami jika ada pertanyaan atau untuk melakukan reservasi.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-white min-h-[50vh]">
+    <div class="container mx-auto max-w-5xl">
+      <div class="flex flex-col md:flex-row gap-12">
+        <div class="w-full md:w-1/2 space-y-8">
+          <div>
+            <h2 class="text-2xl font-serif font-bold text-terracotta-500 mb-4">Informasi Kontak</h2>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="bg-cream-200 text-terracotta-500 rounded-full p-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-terracotta-500">Alamat</h4>
+                  <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                    Sendaran RT.3, RW.4, Sendaran, Kembanglimus,<br/> 
+                    Borobudur, Magelang Regency,<br/> 
+                    Central Java 56553
+                  </p>
+                  <a href="https://maps.app.goo.gl/T9gEuSuwrKSerzmw7" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-leaf-500 text-sm font-bold hover:underline">
+                    Buka di Google Maps &rarr;
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="bg-cream-200 text-terracotta-500 rounded-full p-3">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-terracotta-500">WhatsApp</h4>
+                  <a href={urlWA} target="_blank" rel="noopener noreferrer" class="text-leaf-500 font-medium hover:underline">+62 882-2538-6498</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-cream-100 p-8 rounded-2xl border border-cream-200">
+            <h3 class="text-xl font-serif font-bold text-terracotta-500 mb-2">Reservasi Mudah</h3>
+            <p class="text-terracotta-400 mb-6 text-sm">Klik tombol di bawah untuk langsung terhubung dengan admin kami via WhatsApp tanpa perlu simpan nomor.</p>
+            <a href={urlWA} target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+              Chat Sekarang
+            </a>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-1/2">
+          <div class="h-full min-h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+            <iframe 
+              src="https://maps.google.com/maps?q=C52J%2BH8%20Kembanglimus,%20Kabupaten%20Magelang,%20Jawa%20Tengah&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

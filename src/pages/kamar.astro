@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RoomCard from '../components/RoomCard.astro';
+import { dataKamar } from '../data/kamar';
+---
+
+<Layout 
+  title="Pilihan Kamar" 
+  description="Pilihan kamar di Homestay Slamet Widodo. Tersedia kamar utama dengan fasilitas lengkap dan kamar joglo dengan nuansa tradisional yang asri."
+>
+  <!-- Header Kamar -->
+  <section class="bg-terracotta-500 py-20 px-4">
+    <div class="container mx-auto text-center mt-12">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-cream-100 mb-4">Pilihan Kamar</h1>
+      <p class="text-xl text-cream-200 max-w-2xl mx-auto">
+        Kenyamanan menginap yang disesuaikan dengan kebutuhan Anda, dari kamar berfasilitas lengkap hingga pengalaman otentik rumah tradisional.
+      </p>
+    </div>
+  </section>
+
+  <!-- Kamar Utama -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="mb-12 border-b border-cream-200 pb-4">
+        <h2 class="text-3xl font-serif font-bold text-terracotta-500 mb-2">Kamar Utama</h2>
+        <p class="text-terracotta-400">Berlokasi di rumah utama dengan fasilitas lengkap (Air Panas, WiFi, TV, AC, Kamar Mandi Dalam).</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {dataKamar.filter(k => k.tipe === 'utama').map(kamar => (
+          <RoomCard kamar={kamar} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Kamar Joglo -->
+  <section class="py-16 px-4 bg-cream-100 border-t border-cream-200">
+    <div class="container mx-auto">
+      <div class="mb-12 border-b border-terracotta-400/30 pb-4">
+        <h2 class="text-3xl font-serif font-bold text-terracotta-500 mb-2">Kamar Joglo</h2>
+        <p class="text-terracotta-400">Pengalaman otentik di rumah tradisional Joglo. Total 7 kamar tersedia (Shared Bathroom).</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {dataKamar.filter(k => k.tipe === 'joglo').map(kamar => (
+          <RoomCard kamar={kamar} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
