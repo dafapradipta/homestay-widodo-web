@@ -11,7 +11,7 @@ export interface Kamar {
 export const dataKamar: Kamar[] = [
   {
     id: 'kamar-1-utama',
-    nama: 'Kamar 1 (Rumah Utama)',
+    nama: 'Deluxe Family Room',
     harga: 299000,
     tipe: 'utama',
     deskripsiSingkat: '2 kasur (besar & kecil)',
@@ -20,7 +20,7 @@ export const dataKamar: Kamar[] = [
   },
   {
     id: 'kamar-2-utama',
-    nama: 'Kamar 2 (Rumah Utama)',
+    nama: 'Superior Double Room',
     harga: 199000,
     tipe: 'utama',
     deskripsiSingkat: '1 kasur besar',
@@ -29,7 +29,7 @@ export const dataKamar: Kamar[] = [
   },
   {
     id: 'kamar-3-utama',
-    nama: 'Kamar 3 (Rumah Utama)',
+    nama: 'Premium Family Room',
     harga: 299000,
     tipe: 'utama',
     deskripsiSingkat: '2 kasur (besar & kecil)',
@@ -38,7 +38,7 @@ export const dataKamar: Kamar[] = [
   },
   {
     id: 'kamar-joglo',
-    nama: 'Kamar Joglo',
+    nama: 'Classic Joglo Room',
     harga: 99000,
     tipe: 'joglo',
     deskripsiSingkat: 'Terdapat 7 kamar di rumah hunian tradisional Joglo dengan 1 kasur ukuran 120cm per kamar.',
