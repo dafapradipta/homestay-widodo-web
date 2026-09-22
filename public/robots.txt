@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://homestay-widodo.vercel.app/sitemap-index.xml
+Sitemap: https://penginapan-borobudur.vercel.app/sitemap-index.xml

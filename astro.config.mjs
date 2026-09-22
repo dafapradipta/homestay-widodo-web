@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://homestay-widodo.vercel.app', // Ganti dengan domain asli jika sudah beli
+  site: 'https://penginapan-borobudur.vercel.app', // Ganti dengan domain asli jika sudah beli
   i18n: {
     defaultLocale: "id",
     locales: ["id", "en"],
